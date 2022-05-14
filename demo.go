@@ -19,9 +19,9 @@ func main(){
 	}
 	inFile.Close()
 	os.Rename(os.Args[1],os.Args[1] + "_old")
-	outFile, err := os.OpenFile(os.Args[1],os.O_CREATE,0755)
+	outFile, err := os.Create(os.Args[1])
 	if err != nil {
-		log.Fatal("Unable to read input file ", err)
+		log.Fatal("Unable to create output file ", err)
 	}
 	defer outFile.Close()
 	csvWriter := csv.NewWriter(outFile)
